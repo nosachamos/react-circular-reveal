@@ -1,0 +1,174 @@
+{
+  "name": "react-circular-reveal",
+  "version": "1.0.0-alpha.1",
+  "description": "Quickly and easily add Material Design's \"Circular Reveal\" animation in your web app.",
+  "main": "build/index.js",
+  "typings": "build/index.d.ts",
+  "repository": "https://github.com/nosachamos/react-circular-reveal",
+  "homepage": "http://nosachamos.github.com/react-circular-reveal",
+  "license": "MIT",
+  "keywords": [
+    "form validation",
+    "form",
+    "validation",
+    "react",
+    "hooks",
+    "awesome",
+    "usable"
+  ],
+  "files": [
+    "build"
+  ],
+  "scripts": {
+    "describe": "npm-scripts-info",
+    "clean": "rm -rf build && rm -rf test && rm -rf .tmp",
+    "build": "run-s clean && npm run build:ts && npm run build:js && npm run build:copy-types",
+    "build:ts": "tsc -p tsconfig.json",
+    "build:js": "webpack --config webpack.config.js -p && webpack --config webpack.min.config.js -p",
+    "build:copy-types": "cp .tmp/*.d.ts build",
+    "prepare": "run-s prepare:*",
+    "prepare:generate-barrels": "barrelsby --directory src --singleQuotes --delete",
+    "prepare:generate-changelog": "auto-changelog -p --ignore-commit-pattern \"update changelog, fix linting, regenerate barrels\"",
+    "prepare:synk": "snyk protect",
+    "prepare:prettier": "prettier \"src/**/*.ts\" --write --print-width=120",
+    "prepare:tslint": "tslint --fix --project .",
+    "prepare:commit-changes": "git add --all && git commit -m \"chore(release): update changelog, fix linting, regenerate barrels\"",
+    "check": "tslint --project . && npm run test -- --no-cache --coverage",
+    "test": "jest",
+    "test:coverage": "jest --coverage && codecov",
+    "test:watch": "jest --watch",
+    "test-release": "run-s clean build test-release:*",
+    "test-release:lint": "tslint --project . && prettier \"src/**/*.ts\" --list-different --print-width=120",
+    "test-release:unit": "npm run test -- --no-cache",
+    "release-prerelease": "npm run check && npm version prerelease && npm run release:prepare-release && npm run release:release-to-github && npm run release:release-to-npm",
+    "release-patch": "npm run check && npm version patch && npm run release:prepare-release && npm run release:release-to-github && npm run release:release-to-npm",
+    "release-minor": "npm run check && npm version minor && npm run release:prepare-release && npm run release:release-to-github && npm run release:release-to-npm",
+    "release-major": "npm run check && npm version major && npm run release:prepare-release && npm run release:release-to-github && npm run release:release-to-npm",
+    "release:prepare-release": "run-s clean build prepare doc:generate",
+    "release:release-to-github": "git push && git push --tags",
+    "release:release-to-npm": "npm publish",
+    "watch": "run-s clean build:main && run-p \"build:main -- -w\" \"test:unit -- --watch\"",
+    "doc": "run-s doc:generate:html && opn build/docs/html/index.html",
+    "doc:generate": "run-s doc:generate:*",
+    "doc:generate:html": "typedoc src/ --exclude **/*.spec.ts --target ES6 --mode file --out build/docs/html",
+    "doc:generate:json": "typedoc src/ --exclude **/*.spec.ts --target ES6 --mode file --json build/docs/json/typedoc.json"
+  },
+  "scripts-info": {
+    "info": "Display information about the package scripts",
+    "build": "Clean and rebuild the project",
+    "fix": "Try to automatically fix any linting problems",
+    "test": "Lint and unit test the project",
+    "watch": "Watch and rebuild the project on save, then rerun relevant tests",
+    "cov": "Rebuild, run tests, then create and open the coverage report",
+    "doc": "Generate HTML API documentation and open it in a browser",
+    "doc:json": "Generate API documentation in typedoc JSON format",
+    "version": "Bump package.json version, update CHANGELOG.md, tag release",
+    "reset": "Delete all untracked files and reset the repo to the last commit",
+    "prepare-release": "One-step: clean, build, test, publish docs, and prep a release"
+  },
+  "engines": {
+    "node": ">=8.9"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-proposal-class-properties": "^7.0.0",
+    "@babel/plugin-proposal-export-namespace-from": "^7.0.0",
+    "@babel/plugin-proposal-throw-expressions": "^7.0.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@babel/polyfill": "^7.0.0-beta.51",
+    "@babel/preset-env": "^7.0.0-beta.51",
+    "@babel/preset-react": "^7.0.0-beta.51",
+    "@commitlint/cli": "^7.5.2",
+    "@commitlint/config-conventional": "^7.5.0",
+    "@testing-library/react": "^8.0.4",
+    "@types/enzyme": "^3.9.4",
+    "@types/jest": "^24.0.15",
+    "@types/react": "^16.8.22",
+    "@types/validator": "^10.11.1",
+    "auto-changelog": "^1.11.0",
+    "awesome-typescript-loader": "5.2.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-eslint": "^8.2.3",
+    "babel-jest": "^23.4.2",
+    "babel-loader": "^8.0.0-beta.0",
+    "barrelsby": "^1.0.2",
+    "codecov": "^3.5.0",
+    "coveralls": "^3.0.4",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.3.1",
+    "gh-pages": "^2.0.1",
+    "husky": "^1.3.1",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^23.6.0",
+    "jest-config": "^23.6.0",
+    "jest-transform-stub": "^1.0.0",
+    "npm-run-all": "^4.1.5",
+    "npm-scripts-info": "^0.3.9",
+    "opn-cli": "^4.0.0",
+    "prettier": "^1.15.2",
+    "pretty-quick": "^1.10.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "snyk": "^1.185.5",
+    "source-map-loader": "0.2.3",
+    "standard-version": "^4.4.0",
+    "trash-cli": "^1.4.0",
+    "ts-jest": "^23.10.5",
+    "ts-node": "^7.0.1",
+    "tslint": "^5.11.0",
+    "tslint-config-prettier": "^1.17.0",
+    "tslint-immutable": "^5.0.0",
+    "tslint-loader": "3.6.0",
+    "typedoc": "^0.13.0",
+    "typescript": "^3.5.2",
+    "uglifyjs-webpack-plugin": "^2.1.3",
+    "webpack": "4.12.0",
+    "webpack-cli": "^3.3.5",
+    "webpack-dev-server": "^3.1.11"
+  },
+  "jest": {
+    "setupFiles": [
+      "<rootDir>/enzyme.config.js"
+    ],
+    "transform": {
+      "^.+\\.(ts|tsx)$": "ts-jest",
+      "^.+\\.(js|jsx)$": "babel-jest"
+    },
+    "clearMocks": true,
+    "testEnvironment": "jsdom",
+    "testRegex": "(\\.(test|spec))\\.(js|jsx)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 90,
+        "functions": 95,
+        "lines": 95,
+        "statements": 95
+      }
+    },
+    "coverageDirectory": "./coverage/",
+    "collectCoverageFrom": [
+      "src/{!(index),}.{js,ts}"
+    ]
+  },
+  "prettier": {
+    "singleQuote": true
+  },
+  "lint-staged": {
+    "linters": {
+      "{src,test}/**/*.{ts,jsx}": [
+        "prettier --write --print-width=120",
+        "git add"
+      ]
+    }
+  },
+  "snyk": true
+}

@@ -1,0 +1,24 @@
+@import "../../mixins-and-variables.module";
+
+.overlay {
+  position: relative;
+  pointer-events: all;
+}
+
+.revealCurtain {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+
+.revealContent {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  min-width: 500px;
+}

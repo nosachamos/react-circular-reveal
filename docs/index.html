@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <title>
+      react-circular-reveal - quickly and easily add Material Design's circular reveal animation in your web app.
+    </title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta
+      name="description"
+      content="Quickly and easily add Material Design's circular reveal animation in your web app."
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css" />
+
+    <style>
+      section.cover {
+        background: #325890 url(_media/background.jpg) center center / cover !important;
+        overflow: hidden;
+      }
+
+      /* TEMPORARY - just for the Coming Soon... text */
+      section.cover p {
+        font-size: 36px;
+        color: rgba(255,255,255,0.5);
+      }
+
+      section.cover ul {
+        margin-top: -80px;
+        color: white;
+      }
+
+      @media (max-width: 860px) {
+        section.cover ul {
+          margin-top: -40px;
+        }
+      }
+
+      @media (max-width: 560px) {
+        section.cover ul {
+          margin-top: 0px;
+        }
+      }
+
+      .markdown-section h1 {
+        margin: 2.5rem 0 1rem;
+      }
+
+      section.cover.has-mask .mask {
+        opacity: 0 !important;
+      }
+
+      section.cover .cover-main img {
+        margin-top: -100px;
+        max-width: 50% !important;
+        min-width: 300px !important;
+      }
+
+      /* Get started button */
+      section.cover .cover-main > p:last-child a:last-child {
+        background-color: #325890;
+        color: white;
+      }
+
+      /* Get started hover button */
+      section.cover .cover-main > p:last-child a:last-child:hover {
+          background-color: #4d80cc; !important;
+          color: white;
+      }
+
+      /* Github button */
+      section.cover .cover-main > p:last-child a {
+        border-color: #325890;
+        color: #325890;
+        box-shadow: 0 0 30px white;
+      }
+
+      /* Github hover button */
+      section.cover .cover-main > p:last-child a:not(:last-child):hover {
+        color: #4d80cc;
+        border-color: #4083e6;
+      }
+
+      section.cover .cover-main {
+        margin: 40px 16px 0 !important;
+      }
+
+      .github-corner svg {
+        fill: #325890;
+      }
+
+      .markdown-section code {
+        font-size: 0.8em;
+      }
+
+      .app-sub-sidebar li:before {
+        opacity: 0;
+      }
+
+      .sidebar-nav > ul > li > a {
+        font-weight: bold;
+      }
+
+      .sidebar ul li.active > a,
+      .markdown-section code,
+      .token.function,
+      .token.keyword {
+        color: #325890;
+      }
+
+      [data-page="README.md"] {
+        overflow: hidden;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <script>
+      window.$docsify = {
+        routerMode: 'hash',
+        auto2top: true,
+        loadSidebar: true,
+        subMaxLevel: 3,
+        coverpage: true,
+        onlyCover: true,
+        logo: '_media/sidebarLogo.png',
+        name: 'react-circular-reveal',
+        repo: 'https://github.com/nosachamos/react-circular-reveal',
+        baseUrl: 'https://nosachamos.github.io/react-circular-reveal/'
+      };
+    </script>
+    <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
+    <script src="//unpkg.com/prismjs/components/prism-jsx.min.js"></script>
+
+    <script>
+      function generate() {
+        const hexValues = ['a', 'b', 'c', 'd', 'e', 'f'];
+
+        function populate(a) {
+          for (let i = 0; i < 6; i++) {
+            const x = Math.round(Math.random() * (hexValues.length - 1));
+            const y = hexValues[x];
+            a += y;
+          }
+          return a;
+        }
+
+        const newColor1 = populate('#');
+        const newColor2 = populate('#');
+        const angle = Math.round(Math.random() * 360);
+
+        const gradient = 'linear-gradient(' + angle + 'deg, ' + newColor1 + ', ' + newColor2 + ')';
+
+        return gradient;
+      }
+
+      setTimeout(function() {
+        const size = Math.max(document.body.clientWidth, document.body.clientHeight) * 2.5;
+        const css = `@keyframes bubble {
+          0% {
+            width: 0;
+            height: 0;
+            opacity: 0.2;
+          }
+
+          100% {
+            width: calc(${size}px * 2.5);
+            height: calc(${size}px * 2.5);
+            opacity: 0;
+          }
+        }`;
+
+        const head = document.head || document.getElementsByTagName('head')[0];
+        const style = document.createElement('style');
+
+        head.appendChild(style);
+        style.appendChild(document.createTextNode(css));
+
+        const coverDiv = document.querySelector('section.cover');
+        if (coverDiv) {
+          setInterval(function() {
+            const div = document.createElement('div');
+            div.classList = '.bubble';
+            div.style.position = 'absolute';
+            div.style.animation = 'bubble 2s forwards ease-in-out';
+            div.style.transform = `translateX(-50%) translateY(-50%)`;
+            div.style.borderRadius = '50%';
+            div.style.background = generate();
+            div.style.left = Math.floor(Math.random() * document.body.clientWidth) + 'px';
+            div.style.top = Math.floor(Math.random() * document.body.clientHeight) + 'px';
+            coverDiv.appendChild(div);
+
+            setTimeout(function() {
+              coverDiv.removeChild(div);
+            }, 4000);
+          }, 1500);
+        }
+      }, 1000);
+
+    </script>
+
+
+  </body>
+</html>
