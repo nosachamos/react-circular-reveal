@@ -14,7 +14,7 @@ export class CurtainEvent {
 
 export type CalculateCurtainSize = (currentCurtainSize: number, opening: boolean) => number;
 
-type Props = {
+interface Props {
     reveal?: boolean,
     contentMinWidth?: number,
     children?: React.ReactNode,
@@ -49,7 +49,7 @@ export const CircularRevealPanel: React.FC<Props> = (
         }
     }, [animating]);
 
-    let globalID = useRef(-1);
+    const globalID = useRef(-1);
     const sizeRef = useRef(1);
 
     let resizeCurtainFunction: CalculateCurtainSize;
@@ -167,7 +167,7 @@ export const CircularRevealPanel: React.FC<Props> = (
 };
 
 CircularRevealPanel.defaultProps = {
+    contentMinWidth: 500,
     reveal: false,
-    speed: 'normal',
-    contentMinWidth: 500
+    speed: 'normal'
 };
