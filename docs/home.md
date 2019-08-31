@@ -24,4 +24,4 @@ npm install react-circular-reveal --save
 
 # WIP
 
-Check back soon. :)
+Coming soon. :)

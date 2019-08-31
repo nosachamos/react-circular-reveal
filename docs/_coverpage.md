@@ -9,7 +9,5 @@
 
 Coming soon..
 
-.
-
 [GitHub](https://github.com/nosachamos/react-circular-reveal/)
 [Getting Started](/home)
