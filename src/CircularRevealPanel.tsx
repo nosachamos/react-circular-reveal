@@ -1,5 +1,5 @@
 import React, { useCallback, useRef } from 'react';
-import styles from './CircularRevealPanel.module.scss';
+import './CircularRevealPanel.css';
 
 export type EventType = 'CURTAIN_OPENING' | 'CURTAIN_OPENED' | 'CURTAIN_CLOSING' | 'CURTAIN_CLOSED';
 
@@ -152,13 +152,13 @@ export const CircularRevealPanel: React.FC<Props> = (
     }
 
     return <div ref={revealOverlayRef}
-                className={styles.overlay}
+                className='circular-reveal__overlay'
                 onMouseMove={onMouseMove}>
         {children}
         <div ref={revealCurtainRef}
-             className={styles.revealCurtain}>
+             className='circular-reveal__revealCurtain'>
             <div ref={revealContentRef}
-                 className={styles.revealContent}>
+                 className='circular-reveal__revealContent'>
                 {revealContent}
             </div>
             {revealCurtainContent}
