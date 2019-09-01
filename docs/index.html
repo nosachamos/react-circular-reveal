@@ -112,6 +112,14 @@
         color: #325890;
       }
 
+      .token.attr-name {
+        color: #bb450a;
+      }
+
+      .markdown-section {
+        max-width: 1000px;
+      }
+
       [data-page="README.md"] {
         overflow: hidden;
       }
@@ -129,7 +137,7 @@
         subMaxLevel: 3,
         coverpage: true,
         onlyCover: true,
-        logo: '_media/sidebarLogo.png',
+        logo: '_media/logo.png',
         name: 'react-circular-reveal',
         repo: 'https://github.com/nosachamos/react-circular-reveal',
         baseUrl: 'https://nosachamos.github.io/react-circular-reveal/'
@@ -161,47 +169,84 @@
       }
 
       setTimeout(function() {
-        const size = Math.max(document.body.clientWidth, document.body.clientHeight) * 2.5;
-        const css = `@keyframes bubble {
-          0% {
-            width: 0;
-            height: 0;
-            opacity: 0.2;
-          }
 
-          100% {
-            width: calc(${size}px * 2.5);
-            height: calc(${size}px * 2.5);
-            opacity: 0;
-          }
-        }`;
-
-        const head = document.head || document.getElementsByTagName('head')[0];
-        const style = document.createElement('style');
-
-        head.appendChild(style);
-        style.appendChild(document.createTextNode(css));
 
         const coverDiv = document.querySelector('section.cover');
         if (coverDiv) {
-          setInterval(function() {
+          const bubble = function() {
+            const top = Math.floor(Math.random() * document.body.clientHeight);
+            const left = Math.floor(Math.random() * document.body.clientWidth);
+            const size = Math.max(document.body.clientWidth, document.body.clientHeight) * 2.7;
+            const offsetTop = size/2 - top;
+            const offsetLeft = size/2 - left;
+            const classSuffix = Math.floor(Math.random() * 1000) + '';
+            const css = `
+              @keyframes bubble_${classSuffix} {
+                0% {
+                  width: 0;
+                  height: 0;
+                }
+
+                100% {
+                  width: ${size}px;
+                  height: ${size}px;
+                }
+              }
+
+              @keyframes bubbleImg_${classSuffix} {
+                0% {
+                  top: -${(size / 2) - offsetTop}px;
+                  left: -${(size / 2) - offsetLeft}px;
+                }
+
+                100% {
+                  top: ${offsetTop}px;
+                  left: ${offsetLeft}px;
+                }
+              }`;
+
+            const head = document.head || document.getElementsByTagName('head')[0];
+            const style = document.createElement('style');
+
+            head.appendChild(style);
+            style.appendChild(document.createTextNode(css));
+
             const div = document.createElement('div');
-            div.classList = '.bubble';
+            div.style.backgroundColor = `rgb(${155 + Math.floor(Math.random() * 100)},${155 + Math.floor(Math.random() * 100)},${155 + Math.floor(Math.random() * 100)})`;
             div.style.position = 'absolute';
-            div.style.animation = 'bubble 2s forwards ease-in-out';
+            div.style.animation = `bubble_${classSuffix} 2s forwards ease-in-out`;
             div.style.transform = `translateX(-50%) translateY(-50%)`;
             div.style.borderRadius = '50%';
-            div.style.background = generate();
-            div.style.left = Math.floor(Math.random() * document.body.clientWidth) + 'px';
-            div.style.top = Math.floor(Math.random() * document.body.clientHeight) + 'px';
+            div.style.overflow = 'hidden';
+            div.style.top = top + 'px';
+            div.style.left = left + 'px';
+
+            const imgs = ['01.png', '02.jpg', '03.png'];
+
+
+            const img = document.createElement('img');
+            img.src = `_media/${imgs[Math.floor(Math.random() * imgs.length)]}`;
+            img.style.animation = `bubbleImg_${classSuffix} 2s forwards ease-in-out`;
+            img.style.position = 'fixed';
+            img.style.width = document.body.clientWidth + 'px';
+            img.style.maxWidth = document.body.clientWidth + 'px';
+            img.style.height = document.body.clientHeight + 'px';
+            img.style.maxHeight = document.body.clientHeight + 'px';
+
+            div.appendChild(img);
+
             coverDiv.appendChild(div);
 
             setTimeout(function() {
               coverDiv.removeChild(div);
+              head.removeChild(style);
             }, 4000);
-          }, 1500);
+
+            setTimeout(bubble, 500 + Math.floor(Math.random() * 2000));
+          };
+          bubble();
         }
-      }, 1000);
+      }, 500);
 
     </script>
 
