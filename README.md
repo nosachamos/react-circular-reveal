@@ -9,7 +9,7 @@
 **react-circular-reveal** allows you do quickly and easily add Material Design's "Circular Reveal" animation in your web app.
 
 <p align="center">
-<img src="https://github.com/nosachamos/react-circular-reveal/raw/master/docs/logo.png" alt="react-circular-reveal" style="max-width:100%;">
+<img src="https://github.com/nosachamos/react-circular-reveal/raw/master/docs/_media/logo.png" alt="react-circular-reveal" style="max-width:100%;">
 </p>
 
 <br/>
