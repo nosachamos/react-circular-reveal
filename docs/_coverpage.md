@@ -1,13 +1,8 @@
 ![logo](_media/logo.png)
 
-<!--
-- Simple and lightweight (~1.9kB gzipped)
-- Magical and transparent rest calls and error management
-- Compatible with React Hooks, but works everywhere
+Quickly and easily add Material Design's circular reveal animation in your web app.
 
--->
-
-Coming soon..
+<div id="demoContainer"></div>
 
 [GitHub](https://github.com/nosachamos/react-circular-reveal/)
 [Getting Started](/home)
