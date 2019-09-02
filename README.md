@@ -11,7 +11,6 @@
 <p align="center">
 <img src="https://github.com/nosachamos/react-circular-reveal/raw/master/docs/_media/logo.png" alt="react-circular-reveal" style="max-width:100%;">
 </p>
-
 <br/>
 
 # Installation
