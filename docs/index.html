@@ -177,10 +177,11 @@
         return gradient;
       }
 
-      function preloadImages()
-      {
-        var img=new Image();
-        img.src=url;
+      const imageCount = 50;
+
+      // preloading images for circular reveal demo effect
+      for (let i = 0; i < imageCount+1; i++) {
+        (new Image()).src = `_media/${i}.jpg`;
       }
 
       function bubbleEffect(areaWidth, areaHeight, containerSelector, duration, renderTranslucent) {
@@ -241,7 +242,7 @@
 
               if (!renderTranslucent) {
                 const img = document.createElement('img');
-                img.src = `_media/${Math.floor(Math.random() * 50) + '.jpg'}`;
+                img.src = `_media/${Math.floor(Math.random() * imageCount) + '.jpg'}`;
                 img.style.animation = `bubbleImg_${classSuffix} ${duration} forwards ease-in-out`;
                 img.style.position = 'absolute';
                 img.style.width = areaWidth + 'px';
