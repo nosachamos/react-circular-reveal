@@ -177,6 +177,12 @@
         return gradient;
       }
 
+      function preloadImages()
+      {
+        var img=new Image();
+        img.src=url;
+      }
+
       function bubbleEffect(areaWidth, areaHeight, containerSelector, duration, renderTranslucent) {
         return function() {
 
