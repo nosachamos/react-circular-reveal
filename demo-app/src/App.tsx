@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { CircularRevealPanel } from '../../src/CircularRevealPanel';
+import { CircularRevealPanel } from 'react-circular-reveal';
+import Dashboard from './main/Dashboard';
 
 const App: React.FC = () => {
 
@@ -25,27 +26,10 @@ const App: React.FC = () => {
             </div>
           }
       >
-        <div className={'content'} onClick={() => setConfirming(true)}>
-          <h1>I am displayed by default</h1>
-        </div>
+        <Dashboard onClick={() => setConfirming(true)}/>
 
       </CircularRevealPanel>
 
-
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
     </div>
   );
 }

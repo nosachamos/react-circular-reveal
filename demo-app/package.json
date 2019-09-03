@@ -3,13 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.4.0",
+    "@material-ui/icons": "^4.2.1",
     "@types/jest": "24.0.18",
     "@types/node": "12.7.3",
     "@types/react": "16.9.2",
     "@types/react-dom": "16.9.0",
     "react": "^16.9.0",
+    "react-circular-reveal": "^1.0.0-alpha.11",
     "react-dom": "^16.9.0",
     "react-scripts": "3.1.1",
+    "recharts": "^1.7.1",
     "typescript": "3.6.2"
   },
   "scripts": {

@@ -2,6 +2,7 @@
 .circular-reveal__overlay {
   position: relative;
   pointer-events: all;
+  overflow: hidden;
 }
 
 .circular-reveal__revealCurtain {
