@@ -184,6 +184,10 @@
         (new Image()).src = `_media/${i}.jpg`;
       }
 
+      // prevent Firefox from caching the page on bfcache, which prevents our animations from running if page loads by
+      // pressing the Back button
+      window.onunload = function(){};
+
       function bubbleEffect(areaWidth, areaHeight, containerSelector, duration, renderTranslucent) {
         return function() {
 
@@ -267,9 +271,9 @@
         }
       };
 
-      setTimeout(bubbleEffect(document.body.clientWidth, document.body.clientHeight, 'section.cover', '6s', true), 500);
-
       setTimeout(bubbleEffect(400, 500, '#demoContainer', '1s', false), 500);
+
+      setTimeout(bubbleEffect(document.body.clientWidth, document.body.clientHeight, 'section.cover', '6s', true), 500);
 
     </script>
 
