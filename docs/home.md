@@ -45,13 +45,14 @@ it when the circular reveal animation takes place.
 ```
 
 #### Key points:
- - The `reveal` prop determines whether the circular reveal takes place or not. Set it to `true` to have the reveal content
- be displayed on top of the default content.
+
+ - Set `reveal` prop to `true` to have the reveal content be displayed on top of the default content.
 
  - The reveal animation will by default open and close towards the current mouse location, which is automatically tracked fo you.
  In the example above, you don't need to do anything to make it look like the content opened from the tip of the mouse cursor. Awesome!
  
- - Everything can be customized, so you can be creative and create impressive UIs that are only normally seen in native applications.
+ - Everything can be customized so you can be creative and build impressive user interfaces that are only normally seen in native applications.
+
 
 ## Example
 
@@ -78,25 +79,69 @@ it when the circular reveal animation takes place.
 
 Results in:
 
-![npm](_media/reveal.gif)
+![reveal animation](_media/reveal.gif)
+
 
 # Props
 
-The CircularRevealPanel component accepts the following props:
+The `CircularRevealPanel` component accepts several props that can be used to setup and customize it's behavior.
 
+#### Props you will definitely need
 
 | Prop  |     Type     |  Required  | Default | Description |
 | ----- | ---------------- | ---- | --- | ----------- |
 | `revealContent` | `React Node` | yes | N/A |Receives the content to be revealed through the circular reveal animation. |
 | `reveal` | `boolean` | no | `false` |A value indicating whether to display the reveal content or not. |
+
+#### Props you probably won't need
+
+| Prop  |     Type     |  Required  | Default | Description |
+| ----- | ---------------- | ---- | --- | ----------- |
 | `revealCurtainContent` | `React Node` | no | `undefined` | Only needed for advanced customizations, this prop may be used to insert elements within the reveal curtain. |
 | `speed` | `string` or `function` | no | `normal` | The valid string values are `very slow`, `slow`, `normal` (default), `fast`. Most likely these will suffice. For advanced customizations, see below. |
 | `contentMinWidth` | `number` | no | 500 | The minimum width for the content to be revealed, in pixels. This prevents the content from appear to rearrange as the curtain expands. |
 
+# Events
+
+The `CircularRevealPanel` component accepts an `onChange` event handler which is invoked when the opening and closing operations start and finish. It gives you access to the raw HTML elements used to 
+
+The event object argument contains three properties of interest:
+
+-  The`type` property which kind of event this is. It can be of the following: `CURTAIN_OPENING`, `CURTAIN_OPENED`, `CURTAIN_CLOSING`, `'CURTAIN_CLOSED`.
+- The `curtainElemRef` and `revealContentRef` the properties are references to the raw HTML div elements used as a reveal curtain and reveal content, respectively. Only needed for advanced customizations.
+
+Assume this following setup:
+
+```jsx
+    const handleOnChange = useCallback((e: CurtainEvent) => {
+        console.log('EVENT TYPE: ' + e.type);
+    }, []);
+    
+    <CircularRevealPanel
+            onChange={handleOnChange}
+            revealContent={
+                ...
+            }
+        >
+    
+        ...
+        
+    </CircularRevealPanel>
+```
+
+In this case, opening and closing the reveal content would result in four console log print outs:
+
+```sh
+EVENT TYPE: CURTAIN_OPENING
+EVENT TYPE: CURTAIN_OPENED
+EVENT TYPE: CURTAIN_CLOSING
+EVENT TYPE: CURTAIN_CLOSED
+```
+
 
 # Advanced Customizations
 
-Customizing the opening/closing `speed`
+### Customizing the opening/closing `speed`
 
 The speed with which to open or close the circular reveal animation. Can be a `string` or a `function`.
 
@@ -104,7 +149,7 @@ The valid string values are `very slow`, `slow`, `normal` (default), `fast`. Mos
 
 If you find however that you need to further customize it, you may pass in a function which will be invoked on every step of the reveal animation and must return the next size for the *reveal curtain* (the circular region that displays the reveal content). 
 
-his function is given two parameters - the current size of the reveal curtain, and whether the curtain is opening or closing.
+This function is given two parameters - the current size of the reveal curtain, and whether the curtain is opening or closing.
 
 For reference, this is the function that implements the `normal` speed:
 
@@ -126,5 +171,24 @@ const resizeCurtainFunction = (size, opening) => {
 </CircularRevealPanel>
 ```
 
+### Overriding styles
+
+The styles of all three elements composing the `CircularRevealPanel` component can be overridden to further customize it.
+
+To do so, add or override styles to the following classes:
+
+- `circular-reveal__overlay` - the class of the outermost container that holds both de default content as well as the reveal content. 
+- `circular-reveal__revealCurtain` - the class of the element that serves as our circular reveal curtain.
+- `circular-reveal__revealContent` - the class of the element that holds the reveal content.
+
+Common use cases for overriding or extending such these styles include specifying a `z-index` and setting a `height` so that they will
+cover the entire screen.
 
 
+# Demo app
+
+This project includes a demo app where this component can be seen in action.
+
+To run the demo app locally, clone this repository, then open the terminal and navigate to the location where you closed it. Finally, run `npm start` from within the `demo=app` folder, then open the address `http://localhost:3000/` on your browser.
+
+![demo app](_media/reveal-demo-app.gif)

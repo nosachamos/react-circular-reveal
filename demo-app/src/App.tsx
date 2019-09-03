@@ -33,6 +33,7 @@ const App: React.FC = () => {
 
       <CircularRevealPanel
           reveal={isOpened}
+          speed={'very slow'}
 
           revealContent={
             <SignIn onClick={() => setOpened(false)}/>
