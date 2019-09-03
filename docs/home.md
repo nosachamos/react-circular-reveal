@@ -57,20 +57,20 @@ it when the circular reveal animation takes place.
 
 ```jsx
 <CircularRevealPanel
-        reveal={isOpened}
-        revealContent={
-            <div className={'revealed'}>
-                <h2>I am revealed.</h2>
-                
-                <h1>Awesome!</h1>
-                
-                <button onClick={() => setOpened(false)}>CLOSE</button>
-            </div>
-        }
-    >
+    reveal={isOpened}
+    revealContent={
+        <div className={'revealed'} onClick={() => setOpened(false)}>
+            <h2>I am revealed with a circular animation.</h2>
+            <span>(Click anywhere to close)</span>
+
+            <h1>Awesome!</h1>
+        </div>
+    }
+>
 
     <div className={'content'} onClick={() => setOpened(true)}>
-        <h1>I am displayed by default</h1>
+        <h1>I am the main content</h1>
+        <span>(Click anywhere to trigger a circular reveal)</span>
     </div>
 
 </CircularRevealPanel>
@@ -78,6 +78,7 @@ it when the circular reveal animation takes place.
 
 Results in:
 
+![npm](_media/reveal.gif)
 
 # Props
 

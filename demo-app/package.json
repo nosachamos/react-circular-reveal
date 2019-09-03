@@ -10,7 +10,7 @@
     "@types/react": "16.9.2",
     "@types/react-dom": "16.9.0",
     "react": "^16.9.0",
-    "react-circular-reveal": "^1.0.0-alpha.11",
+    "react-circular-reveal": "^1.0.0-alpha.12",
     "react-dom": "^16.9.0",
     "react-scripts": "3.1.1",
     "recharts": "^1.7.1",

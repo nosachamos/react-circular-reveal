@@ -51,11 +51,11 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export default function SignIn() {
+export default function SignIn({onClick}) {
     const classes = useStyles();
 
     return (
-        <Container component="main" maxWidth="xs">
+        <Container component="main" maxWidth="xs" style={{ maxWidth: '500px'}} onClick={onClick}>
             <CssBaseline />
             <div className={classes.paper}>
                 <Avatar className={classes.avatar}>
@@ -92,13 +92,12 @@ export default function SignIn() {
                         label="Remember me"
                     />
                     <Button
-                        type="submit"
                         fullWidth
                         variant="contained"
                         color="primary"
                         className={classes.submit}
                     >
-                        Sign In
+                        Click anywhere to close the revealed content
                     </Button>
                     <Grid container>
                         <Grid item xs>
