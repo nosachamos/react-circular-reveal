@@ -6,7 +6,6 @@
 ![Snyk Vulnerabilities for GitHub Repo](https://img.shields.io/snyk/vulnerabilities/github/nosachamos/react-circular-reveal.svg)
 ![GitHub](https://img.shields.io/github/license/nosachamos/react-circular-reveal.svg)
 
-Transparent entity management so clean you may never make an api request manually again.
 
 # Installation
 
@@ -192,3 +191,41 @@ This project includes a demo app where this component can be seen in action.
 To run the demo app locally, clone this repository, then open the terminal and navigate to the location where you closed it. Finally, run `npm start` from within the `demo=app` folder, then open the address `http://localhost:3000/` on your browser.
 
 ![demo app](_media/reveal-demo-app.gif)
+
+
+# Credits
+
+The landing page for this project showcases UIs created by this awesome artists:
+
+ - https://www.uplabs.com/posts/cards-pro-ui-kit
+ - https://www.uplabs.com/posts/ecommerce-ui-kit-kit
+ - https://www.uplabs.com/posts/hospital-management-system
+ - https://www.uplabs.com/posts/freebie-signup-login-page-screen
+ - https://www.uplabs.com/posts/log-in-sign-up-screens-kit
+ - https://www.uplabs.com/posts/awesome-material-app-screen
+ - https://www.uplabs.com/posts/sign-up-daily-ui-challenge-day-1
+ - https://www.uplabs.com/posts/01-sign-up-daily-ui-challenge
+ - https://www.uplabs.com/posts/sign-up-page-2b86762e-8ddc-4e00-99e5-fd4708c8fa5c
+ - https://www.uplabs.com/posts/desa-jawara-login-and-sign-up-page-free-template
+ - https://www.uplabs.com/posts/bubu-dragos-visage-ui-kit-forms
+ - https://www.uplabs.com/posts/multiple-login-form-kit
+ - https://www.uplabs.com/posts/restaurant-registration-form
+ - https://www.uplabs.com/posts/medical-multi-level-hierarchy-form
+ - https://www.uplabs.com/posts/day-004-my-ui-challenge-continued
+ - https://www.uplabs.com/posts/mock-up-colors-ui
+ - https://www.uplabs.com/posts/freebies
+ - https://www.uplabs.com/posts/business-financial-icon-free
+ - https://www.uplabs.com/posts/business-idea-mockup
+ - https://www.uplabs.com/posts/info-card-kit
+ - https://www.uplabs.com/posts/brief-profile-info-of-photographer-and-collection-of-photos
+ - https://www.uplabs.com/posts/info-campus-concept
+ - https://www.uplabs.com/posts/health-infographics-daily-ui
+ - https://www.uplabs.com/posts/finey-react-native-app
+ - https://www.uplabs.com/posts/react-native-themplates
+ - https://www.uplabs.com/posts/paper-dashboard-react
+ - https://www.uplabs.com/posts/react-navigation-components-ui
+ - https://www.uplabs.com/posts/brainalytica-material-react-dashboard
+ - https://www.uplabs.com/posts/text-input-styling
+ 
+ If you have a minute, please visit their pages and support their work.
+ 
