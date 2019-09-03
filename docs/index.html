@@ -190,10 +190,9 @@
 
       function bubbleEffect(areaWidth, areaHeight, containerSelector, duration, renderTranslucent) {
         return function() {
-
-          const containerElement = document.querySelector(containerSelector);
-          if (containerElement) {
-            const bubble = function() {
+          const bubble = function() {
+            const containerElement = document.querySelector(containerSelector);
+            if (containerElement) {
               const top = Math.floor(Math.random() * areaHeight);
               const left = Math.floor(Math.random() * areaWidth);
               const size = Math.max(areaWidth, areaHeight) * 2.7;
@@ -265,9 +264,9 @@
               }, 4000);
 
               setTimeout(bubble, 500 + Math.floor(Math.random() * 2000));
-            };
-            bubble();
+            }
           }
+          bubble();
         }
       };
 
