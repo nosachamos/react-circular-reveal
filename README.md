@@ -147,7 +147,7 @@ EVENT TYPE: CURTAIN_CLOSED
 
 # Advanced Customizations
 
-### Customizing the opening/closing `speed`
+## Customizing the opening/closing `speed`
 
 The speed with which to open or close the circular reveal animation. Can be a `string` or a `function`.
 
@@ -177,7 +177,7 @@ const resizeCurtainFunction = (size, opening) => {
 </CircularRevealPanel>
 ```
 
-### Overriding styles
+## Overriding styles
 
 The styles of all three elements composing the `CircularRevealPanel` component can be overridden to further customize it.
 
