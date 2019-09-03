@@ -1,6 +1,6 @@
 {
   "name": "react-circular-reveal",
-  "version": "1.0.0-alpha.14",
+  "version": "1.0.0-alpha.15",
   "description": "Quickly and easily add Material Design's \"Circular Reveal\" animation in your web app.",
   "main": "build/index.js",
   "typings": "build/index.d.ts",
