@@ -95,7 +95,7 @@
     "babel-jest": "^24.8.0",
     "babel-loader": "^8.0.0-beta.0",
     "barrelsby": "^1.0.2",
-    "codecov": "^3.5.0",
+    "codecov": "^3.8.3",
     "coveralls": "^3.0.4",
     "css-loader": "^3.2.0",
     "enzyme": "^3.10.0",
