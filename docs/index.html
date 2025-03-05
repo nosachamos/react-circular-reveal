@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="favicon.png" />
     <title>
-      react-circular-reveal - quickly and easily add Material Design's circular reveal animation in your web app.
+      react-circular-reveal - quickly and easily add Material Design's circular
+      reveal animation in your web app.
     </title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta
@@ -132,7 +133,6 @@
         box-shadow: 0 5px 20px #bdbdbd;
         margin: 10px;
       }
-
     </style>
   </head>
   <body>
@@ -172,7 +172,14 @@
         const newColor2 = populate('#');
         const angle = Math.round(Math.random() * 360);
 
-        const gradient = 'linear-gradient(' + angle + 'deg, ' + newColor1 + ', ' + newColor2 + ')';
+        const gradient =
+          'linear-gradient(' +
+          angle +
+          'deg, ' +
+          newColor1 +
+          ', ' +
+          newColor2 +
+          ')';
 
         return gradient;
       }
@@ -180,15 +187,20 @@
       const imageCount = 50;
 
       // preloading images for circular reveal demo effect
-      for (let i = 0; i < imageCount+1; i++) {
-        (new Image()).src = `_media/${i}.jpg`;
+      for (let i = 0; i < imageCount + 1; i++) {
+        new Image().src = `_media/${i}.jpg`;
       }
 
       // prevent Firefox from caching the page on bfcache, which prevents our animations from running if page loads by
       // pressing the Back button
-      window.onunload = function(){};
-
-      function bubbleEffect(areaWidth, areaHeight, containerSelector, duration, renderTranslucent) {
+      window.onunload = function() {};
+      function bubbleEffect(
+        areaWidth,
+        areaHeight,
+        containerSelector,
+        duration,
+        renderTranslucent
+      ) {
         return function() {
           const bubble = function() {
             const containerElement = document.querySelector(containerSelector);
@@ -196,63 +208,50 @@
               const top = Math.floor(Math.random() * areaHeight);
               const left = Math.floor(Math.random() * areaWidth);
               const size = Math.max(areaWidth, areaHeight) * 2.7;
-              const offsetTop = size / 2 - top;
-              const offsetLeft = size / 2 - left;
               const classSuffix = Math.floor(Math.random() * 1000) + '';
+
               const css = `
-              @keyframes bubble_${classSuffix} {
-                0% {
-                  width: 0;
-                  height: 0;
-                  opacity: ${renderTranslucent ? '0.2' : '1'}
-                }
+                        @keyframes bubble_${classSuffix} {
+                          0% {
+                            width: 0;
+                            height: 0;
+                            opacity: ${renderTranslucent ? '0.2' : '1'};
+                            transform: translate(-50%, -50%) scale(0);
+                          }
+                          100% {
+                            width: ${size}px;
+                            height: ${size}px;
+                            opacity: ${renderTranslucent ? '0' : '1'};
+                            transform: translate(-50%, -50%) scale(1);
+                          }
+                        }`;
 
-                100% {
-                  width: ${size}px;
-                  height: ${size}px;
-                  opacity: ${renderTranslucent ? '0' : '1'}
-                }
-              }
-
-              @keyframes bubbleImg_${classSuffix} {
-                0% {
-                  top: -${(size / 2) - offsetTop}px;
-                  left: -${(size / 2) - offsetLeft}px;
-                }
-
-                100% {
-                  top: ${offsetTop}px;
-                  left: ${offsetLeft}px;
-                }
-              }`;
-
-              const head = document.head || document.getElementsByTagName('head')[0];
+              const head =
+                document.head || document.getElementsByTagName('head')[0];
               const style = document.createElement('style');
-
               head.appendChild(style);
               style.appendChild(document.createTextNode(css));
 
               const div = document.createElement('div');
-              //div.style.backgroundColor = `rgb(${155 + Math.floor(Math.random() * 100)},${155 + Math.floor(Math.random() * 100)},${155 + Math.floor(Math.random() * 100)})`;
               div.style.backgroundColor = 'rgb(0,0,0,0.1)';
               div.style.position = 'absolute';
               div.style.animation = `bubble_${classSuffix} ${duration} forwards ease-in-out`;
-              div.style.transform = `translateX(-50%) translateY(-50%)`;
+              div.style.pointerEvents = 'none';
               div.style.borderRadius = '50%';
               div.style.overflow = 'hidden';
-              div.style.top = top + 'px';
-              div.style.left = left + 'px';
+              div.style.width = '0px';
+              div.style.height = '0px';
+              div.style.top = `${top}px`;
+              div.style.left = `${left}px`;
+              div.style.transform = 'translate(-50%, -50%)';
 
               if (!renderTranslucent) {
                 const img = document.createElement('img');
-                img.src = `_media/${Math.floor(Math.random() * imageCount) + '.jpg'}`;
-                img.style.animation = `bubbleImg_${classSuffix} ${duration} forwards ease-in-out`;
+                img.src = `_media/${Math.floor(Math.random() * imageCount) +
+                  '.jpg'}`;
                 img.style.position = 'absolute';
-                img.style.width = areaWidth + 'px';
-                img.style.maxWidth = areaWidth + 'px';
-                img.style.height = areaHeight + 'px';
-                img.style.maxHeight = areaHeight + 'px';
-
+                img.style.width = `${areaWidth}px`;
+                img.style.height = `${areaHeight}px`;
                 div.appendChild(img);
               }
 
@@ -264,17 +263,23 @@
               }, 4000);
             }
             setTimeout(bubble, 500 + Math.floor(Math.random() * 2000));
-          }
+          };
           bubble();
-        }
-      };
+        };
+      }
 
       setTimeout(bubbleEffect(400, 500, '#demoContainer', '1s', false), 500);
 
-      setTimeout(bubbleEffect(document.body.clientWidth, document.body.clientHeight, 'section.cover', '6s', true), 500);
-
+      setTimeout(
+        bubbleEffect(
+          document.body.clientWidth,
+          document.body.clientHeight,
+          'section.cover',
+          '6s',
+          true
+        ),
+        500
+      );
     </script>
-
-
   </body>
 </html>
