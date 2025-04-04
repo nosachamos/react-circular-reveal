@@ -12,7 +12,7 @@
     "react": "^16.9.0",
     "react-circular-reveal": "^1.0.0-alpha.14",
     "react-dom": "^16.9.0",
-    "react-scripts": "3.1.1",
+    "react-scripts": "5.0.1",
     "recharts": "^1.7.1",
     "typescript": "3.6.2"
   },
